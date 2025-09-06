@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+:root{
+  width: 100%;
+  margin: auto;
+  height: 100%;
+  overflow: hidden;
+  background-color: lightgray;
+}
+body{
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #252525;
+}
