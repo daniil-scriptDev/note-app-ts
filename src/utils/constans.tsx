@@ -1,7 +1,7 @@
 export const NoteColors = {
-  Work: "#0ea5e9",
-  "Daily_affairs ": "#f97316",
-  Personal: "#d946ef",
-  Others: "#10b981",
+  Work: "#3B82F6",
+  "Daily_affairs ": "#F97316",
+  Personal: "#A855F7",
+  Others: "#22C55E",
   Uncategorized: "",
 };

@@ -9,7 +9,7 @@ export default function DropdownCategory() {
   let { selectedValue, selectingCategory } = useSelectCategoryContext();
   let categories: Array<string> = [
     "Work",
-    "Daily routine",
+    "Daily_affairs",
     "Personal",
     "Others",
   ];

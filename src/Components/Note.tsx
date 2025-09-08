@@ -38,7 +38,7 @@ const StyledBookmark = styled.div<StyledBookmarkProps>`
   width: 20px;
   height: 45px;
   margin-left: 70%;
-  background-color: yellow;
+  background-color: ${({ color }) => (color ? color : "yellow")};
   position: absolute;
 
   &::before {
@@ -64,8 +64,8 @@ export default function Note({ notes }: { notes: INotesProps[] }) {
     <>
       <StyledUl>
         {notes.map(({ title, id, date, category }) => (
-          <StyledLi style={{ backgroundColor: NoteColors[category] }} key={id}>
-            <StyledBookmark color={NoteColors[category]} />
+          <StyledLi key={id}>
+            <StyledBookmark style={{ backgroundColor: NoteColors[category] }} />
             {title}
             <StyleNoteData>
               <span>{date}</span>
