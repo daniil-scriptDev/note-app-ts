@@ -10,21 +10,6 @@ const StyledMain = styled.main`
   align-items: center;
 `;
 
-/* interface IColorsCategories {
-  Work: string;
-  "Daily affairs": string;
-  Personal: string;
-  Others: string;
-}
-*/
-/* const colors = {
-  Work: "#0ea5e9",
-  "Daily affairs": "#f97316",
-  Personal: "#d946ef",
-  Others: "#10b981",
-};
- */
-
 export default function Main() {
   let { notes } = useStorageContext();
 
@@ -38,5 +23,3 @@ export default function Main() {
     </>
   );
 }
-
-/* background-color: ${(props) => props.$bgColor || "#BF4F74"} */

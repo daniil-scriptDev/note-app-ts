@@ -3,9 +3,10 @@ import "./App.css";
 import Header from "./Components/Header";
 import MainContainer from "./Components/MainContainer";
 import RoundedButton from "./Components/RoundedButton";
-import CreatingPage from "./Components/CreatingPage";
 import SearchingPage from "./Components/SearchingPage";
 import AboutAppComp from "./Components/AboutAppComp";
+import type { INotesProps } from "./context/StorageNoteCotext";
+import CreatingPage from "./Components/CreatingPage";
 
 export default function App() {
   let [isCreatingPageVisible, setIsCreatingPageVisible] =
@@ -24,6 +25,8 @@ export default function App() {
   };
   // потребує оптимізації
 
+  let [currentNote, setCurrentNote] = useState<INotesProps | null>(null);
+
   return (
     <>
       <Header
@@ -33,7 +36,11 @@ export default function App() {
       <MainContainer />
       <RoundedButton toggleCreateComponent={toggleCreateComponent} />
       {isCreatingPageVisible && (
-        <CreatingPage toggleCreateComponent={toggleCreateComponent} />
+        <CreatingPage
+          currentNote={currentNote}
+          setCurrentNote={setCurrentNote}
+          toggleCreateComponent={toggleCreateComponent}
+        />
       )}
       {isSearchingPageVisible && (
         <SearchingPage toggleSearchComponent={toggleSearchComponent} />

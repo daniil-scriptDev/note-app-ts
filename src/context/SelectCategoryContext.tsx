@@ -1,9 +1,10 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
+import type { Categories } from "../utils/constans";
 
 interface ISelecterCategory {
-  selectedValue: string;
-  setSelectedValue?: React.Dispatch<React.SetStateAction<string>>;
-  selectingCategory: (key: string) => void;
+  selectedValue: Categories;
+  setSelectedValue?: React.Dispatch<React.SetStateAction<Categories>>;
+  selectingCategory: (key: Categories) => void;
 }
 
 let SelectCategoryContext = createContext<null | ISelecterCategory>(null);
@@ -13,8 +14,9 @@ interface ISelectCategoryProvider {
 }
 
 const SelectCategoryProvider = ({ children }: ISelectCategoryProvider) => {
-  const [selectedValue, setSelectedValue] = useState<string>("Uncategorized");
-  let selectingCategory = (key: string) => {
+  const [selectedValue, setSelectedValue] =
+    useState<Categories>("Uncategorized");
+  let selectingCategory = (key: Categories) => {
     setSelectedValue(key);
   };
   let value = {

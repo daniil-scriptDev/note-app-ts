@@ -32,8 +32,6 @@ interface StyledBookmarkProps {
   color?: string;
 }
 
-//const Button = styled.button<ButtonProps>`
-
 const StyledBookmark = styled.div<StyledBookmarkProps>`
   width: 20px;
   height: 45px;
@@ -53,11 +51,8 @@ const StyledBookmark = styled.div<StyledBookmarkProps>`
     border-right: 15px solid transparent;
     border-bottom: 10px solid
       ${({ color }) => (color ? color : "rgb(102, 102, 102)")};
-    //border-bottom: 10px solid inherit;
   }
 `;
-
-//type AvaibaleColors = keyof typeof NoteColors;
 
 export default function Note({ notes }: { notes: INotesProps[] }) {
   return (

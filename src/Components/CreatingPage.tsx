@@ -4,6 +4,7 @@ import { BackButton, SaveButton } from "../imgs/Imgs";
 import DropdownCategory from "./DropdownCategory";
 import { useSelectCategoryContext } from "../context/SelectCategoryContext";
 import styled from "styled-components";
+import type { Categories } from "../utils/constans";
 
 const StyledPage = styled.div`
   position: fixed;
@@ -67,6 +68,8 @@ const StyledTextarea = styled.textarea`
 
 interface IAppProps {
   toggleCreateComponent: () => void;
+  currentNote: INoteData|null;
+  setCurrentNote: React.Dispatch<React.SetStateAction<INoteData | null>>
 }
 
 const getUniqId = () => {
@@ -82,18 +85,31 @@ const getUniqId = () => {
   return uniqId;
 };
 
-interface INoteData {
+export interface INoteData {
   title: string;
   description: string;
   id: string;
   date: string;
-  category: string;
+  category: Categories;
 }
 
-export default function CreatingPage({ toggleCreateComponent }: IAppProps) {
+export default function CreatingPage({ toggleCreateComponent }: IAppProps, { currentNote, setCurrentNote }: { Currentnote: INoteData | null, setCurrentNote: React.Dispatch<React.SetStateAction<INoteData | null>> }) {
+  
+  const [title, setTitle] = useState(currentNote?.title||"");
+  const [description, setDescription] = useState(currentNote?.description || "");
+  
+  const handleSave = () => {
+    if (currentNote) {
+      setCurrentNote({...currentNote, title, description})
+    }else{
+      setCurrentNote({id; Date.now().toString(), title, description})
+    }
+  }
+
   let { addNewNote } = useStorageContext();
 
   let { selectedValue } = useSelectCategoryContext();
+
   let [noteData, setNoteData] = useState<INoteData>({
     title: "",
     description: "",
@@ -103,15 +119,19 @@ export default function CreatingPage({ toggleCreateComponent }: IAppProps) {
   });
 
   useEffect(() => {
-    noteData.category = selectedValue;
+    setNoteData((prev) => ({
+      ...prev,
+      category: selectedValue,
+    }));
   }, [selectedValue]);
 
   const onAddNewNoteHandler = () => {
     if (noteData.title.length >= 1 && noteData.description.length >= 1) {
-      noteData.id = getUniqId();
-      addNewNote(noteData);
-      toggleCreateComponent();
-      console.log(noteData);
+      const newNote = {
+        ...noteData,
+        id: getUniqId(),
+      };
+      addNewNote(newNote);
     }
   };
   return (

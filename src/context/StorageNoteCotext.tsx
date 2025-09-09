@@ -6,7 +6,7 @@ import {
   type ReactNode,
 } from "react";
 import { useSelectCategoryContext } from "./SelectCategoryContext";
-import type { NoteColors } from "../utils/constans";
+import type { Categories, NoteColors } from "../utils/constans";
 
 type AvaibaleColors = keyof typeof NoteColors;
 
@@ -14,7 +14,7 @@ export interface INotesProps {
   id: string;
   title: string;
   date: string;
-  category: AvaibaleColors;
+  category: Categories;
 }
 
 interface IStorageNote {
